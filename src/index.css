@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  background-color: #4267b2;
+  margin-bottom: 20px;
+}
+
+nav ul li {
+  padding: 20px;
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  text-decoration: none !important;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+a {
+  color: white !important;
+  text-decoration: white !important;
+}
+
+.h4Cl {
+  color: black;
+  cursor: pointer;
+}
+
+.current {
+  border-bottom: 4px solid white;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.loginFormCl {
+  width: 30%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.4);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+
+.logoCl {
+  width: 100px;
+  height: 100px;
+}
+
+.logOutButton {
+  display:block;
+}
+
+.loginBackDiv {
+  display:block;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("http://b2blink.in/wp-content/uploads/2016/03/background-learner.jpg");
+}
+
+.navBarImg {
+  height: 50%;
+  background-position: 0 35%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("http://www.munro-inn.com/wp-content/uploads/2016/10/tall-library-bookcases-shelving-for-book-storage-along-wall-two-elegant-lamp-wooden-chair-and-table-many-books-stuffed-inside-the-bookcase.jpg");
+}
+
+.navBarTitle {
+  display: block;
+  position: relative;
+  color: white ;
+  margin-top:-1px;
+  padding-top: 60px;
+  text-shadow: 5px 5px black;
+  font-size: 500%;
+  font-family: 'Francois One', sans-serif;
+}
+
+.profilePage {
+  display: flex;
+  flex-direction: row;
+  padding: 4%;
+}
+
+.profileInfo{
+  margin-left: 10%;
+}
+
+.infoH1 {
+  display: block;
+  text-align: left;
+  padding-bottom: 5%;
+}
+
+.infoH4 {
+  display: block;
+  text-align: left;
+  padding-bottom: 3%;
+}
+
+.albumsDiv {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.albumCover {
+  width: 322px;
+  height: 220px;
+  background-image: url("https://getuikit.com/v2/docs/images/placeholder_600x400.svg");
+  background-size: contain;
+  margin:3.4%;
+  cursor: pointer;
+}
+
+.albumOnHover {
+  visibility: hidden;
+  display: block;
+  margin-top:39.5%;
+  padding: 1px;
+}
+
+.logInTexts {
+  padding: 20px;
+
+}
+
+.albumCover:hover .albumOnHover {
+  visibility: visible;
+  background: rgba(0,0,0,0.2);
+}
+
+.logInText {
+  color: white;
+}
+
+.dropFilesDiv {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	height: 300px;
+	width: 700px;
+	border-style: dashed;
+	border-radius: 10px;
+	overflow-y: scroll;
+}
