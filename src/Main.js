@@ -24,10 +24,16 @@ class Main extends Component {
             });
 			
             console.log("component did mount func runs");
-            
-        };
+            window.FB.getLoginStatus(function(response) {
+                // this.statusChangeCallback(response);
+                if(response.status === "connected"){
+                    console.log("user is logged in");
+                } else {
+                    console.log("user is not logged in");
+                }
+            });
 
-        this.getLoginStatusFunction();
+        };
         
         (function(d, s, id){
 			var js, fjs = d.getElementsByTagName(s)[0];
@@ -36,26 +42,23 @@ class Main extends Component {
 			js.id = id;
 			js.src = "https://connect.facebook.net/en_US/sdk.js";
 			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
+        
+
+        // this.getLoginStatusFunction();
     }
     
-    getLoginStatusFunction(){
-		console.log("login status func runs");
+    // getLoginStatusFunction(){
+	// 	console.log("login status func runs");
 
-		window.FB.getLoginStatus(function(response) {
-			if(response.status === "connected"){
-				console.log("user is logged in");
-				// console.log(this);
-				this.loadPageElementsFunction();
-			
-			} else {
-				console.log("user is not logged in");
-				document.getElementById("mainPageDiv").setAttribute("style", "display: none");
-				document.getElementById("albumsDiv").innerHTML = "";
-				document.getElementById("coverPhoto").setAttribute("src", "");
-			}
-		}.bind(this), true);
-	}
+	// 	window.FB.getLoginStatus(function(response) {
+	// 		if(response.status === "connected"){
+	// 			console.log("user is logged in");
+	// 		} else {
+	// 			console.log("user is not logged in");
+	// 		}
+	// 	}.bind(this), true);
+	// }
 
     render(){
         return (
