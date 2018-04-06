@@ -14,7 +14,7 @@ class Login extends Component {
 		window.FB.login(function(response){
 			console.log("function Log In Runs");
 			console.log(response);
-			window.location.href = "https://facebook-media-viewer.herokuapp.com/logout";
+			window.location.href = "https://facebook-media-viewer.herokuapp.com/profile";
 		});
 	}
 

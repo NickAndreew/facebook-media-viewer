@@ -31,7 +31,7 @@ class Main extends Component {
                 if(response.status === "connected"){
                     console.log("user is logged in");
                     this.setState({status: true});
-                    window.location.href = "https://facebook-media-viewer.herokuapp.com/profile";
+
                 } else {
                     console.log("user is not logged in");
                     this.setState({status: false});
