@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 
 class NavBar extends Component{
 	constructor(props) {
@@ -13,6 +13,7 @@ class NavBar extends Component{
 	logoutFunction() {
 		window.FB.logout(function(response) {
 			console.log("function Log Out Runs");
+			return (<Redirect to='/login' />)
 		});
 	}
 	

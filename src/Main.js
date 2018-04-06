@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Profile from './Profile';
 import Albums from './Albums';
 import Upload from './Upload';
@@ -53,18 +53,17 @@ class Main extends Component {
     render(){
         if(!this.state.status){
             return (
-                <Route path='/login' component={Login}></Route>
-            );
-        } else {
-            return (
-                <Switch>
-                    <Route exact path='/login' component={Login}></Route>
-                    <Route exact path='/profile' component={Profile}></Route>
-                    <Route path='/albums' component={Albums}></Route>
-                    <Route path='/upload' component={Upload}></Route>
-                </Switch>
+                <Redirect to="/login" />
             );
         }
+        return (
+            <Switch>
+                <Route exact path='/login' component={Login}></Route>
+                <Route exact path='/profile' component={Profile}></Route>
+                <Route path='/albums' component={Albums}></Route>
+                <Route path='/upload' component={Upload}></Route>
+            </Switch>
+        )
     }
 
 };
