@@ -13,7 +13,7 @@ class NavBar extends Component{
 	logoutFunction() {
 		window.FB.logout(function(response) {
 			console.log("function Log Out Runs");
-			return (<Redirect to='/login' />)
+			window.location.href = "https://facebook-media-viewer.herokuapp.com/login";
 		});
 	}
 	
