@@ -31,6 +31,7 @@ class Main extends Component {
                 if(response.status === "connected"){
                     console.log("user is logged in");
                     this.setState({status: true});
+                    this.props.history.push("/profile");
                 } else {
                     console.log("user is not logged in");
                     this.setState({status: false});
