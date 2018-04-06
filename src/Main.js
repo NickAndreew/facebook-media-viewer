@@ -51,14 +51,12 @@ class Main extends Component {
     }
 
     render(){
-        const isAccessible = this.state.status;
-        console.log(isAccessible);
         return (
             <Switch>
                 <Route path='/login' component={Login}></Route>
-                <ProtectedRoute isAccessible={isAccessible} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
-                <ProtectedRoute isAccessible={isAccessible} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
-                <ProtectedRoute isAccessible={isAccessible} redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>
+                <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
+                <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
+                <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>
             </Switch>
         )
     }
