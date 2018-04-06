@@ -34,8 +34,8 @@ class Main extends Component {
                     console.log("user is not logged in");
                     this.setState({status: false});
                 }
-            });
-        };
+            }.bind(this));
+        }.bind(this);
         
         (function(d, s, id){
 			var js, fjs = d.getElementsByTagName(s)[0];
