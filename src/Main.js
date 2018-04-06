@@ -53,7 +53,7 @@ class Main extends Component {
     render(){
         if(!this.state.status){
             return (
-                <Redirect to="/login" />
+                <Redirect to='/login' />
             );
         }
         return (
