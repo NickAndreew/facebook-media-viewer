@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Profile from './Profile';
 import Albums from './Albums';
 import Upload from './Upload';
@@ -35,7 +35,6 @@ class Main extends Component {
                     this.setState({status: false});
                 }
             });
-
         };
         
         (function(d, s, id){
@@ -50,22 +49,12 @@ class Main extends Component {
 
         // this.getLoginStatusFunction();
     }
-    
-    // getLoginStatusFunction(){
-	// 	console.log("login status func runs");
-
-	// 	window.FB.getLoginStatus(function(response) {
-	// 		if(response.status === "connected"){
-	// 			console.log("user is logged in");
-	// 		} else {
-	// 			console.log("user is not logged in");
-	// 		}
-	// 	}.bind(this), true);
-	// }
 
     render(){
         if(!this.state.status){
-            return (<Redirect to='/login' />);
+            return (
+                <Route path='/login' component={Login}></Route>
+            );
         } else {
             return (
                 <Switch>
@@ -77,6 +66,7 @@ class Main extends Component {
             );
         }
     }
+
 };
 
 export default Main;
