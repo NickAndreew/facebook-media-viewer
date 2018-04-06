@@ -4,7 +4,7 @@ import Profile from './Profile';
 import Albums from './Albums';
 import Upload from './Upload';
 import Login from './Login';
-import {ProtectedRoute} from 'react-router-protected-route';
+import ProtectedRoute from 'react-router-protected-route';
 
 class Main extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Main extends Component {
 			
             console.log("component did mount func runs");
             window.FB.getLoginStatus(function(response) {
-                // this.statusChangeCallback(response);
+
                 if(response.status === "connected"){
                     console.log("user is logged in");
                     this.setState({status: true});
@@ -35,6 +35,7 @@ class Main extends Component {
                     console.log("user is not logged in");
                     this.setState({status: false});
                 }
+
             }.bind(this));
         }.bind(this);
         
@@ -46,9 +47,7 @@ class Main extends Component {
 			js.src = "https://connect.facebook.net/en_US/sdk.js";
 			fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-        
 
-        // this.getLoginStatusFunction();
     }
 
     render(){
