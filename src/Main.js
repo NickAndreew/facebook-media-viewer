@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Profile from './Profile';
 import Albums from './Albums';
 import Upload from './Upload';
 import Login from './Login';
+import {ProtectedRoute} from 'react-router-protected-route';
 
 class Main extends Component {
     constructor(props) {
@@ -51,17 +52,14 @@ class Main extends Component {
     }
 
     render(){
-        if(!this.state.status){
-            return (
-                <Redirect to='/login' />
-            );
-        }
+        var isAccessible = this.state.status;
+
         return (
             <Switch>
-                <Route exact path='/login' component={Login}></Route>
-                <Route exact path='/profile' component={Profile}></Route>
-                <Route path='/albums' component={Albums}></Route>
-                <Route path='/upload' component={Upload}></Route>
+                <Route path='/login' component={Login}></Route>
+                <ProtectedRoute isAccessible redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
+                <ProtectedRoute isAccessible redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
+                <ProtectedRoute isAccessible redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>
             </Switch>
         )
     }
