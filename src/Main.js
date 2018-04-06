@@ -11,7 +11,7 @@ class Main extends Component {
 		super(props);
 		this.state = {
             response: {},
-            status: false
+            status: ""
 		};
     }
     
@@ -51,15 +51,20 @@ class Main extends Component {
     }
 
     render(){
+        
         console.log(this.state.status);
-        return (
-            <Switch>
-                <Route path='/login' component={Login}></Route>
-                <ProtectedRoute isAccessible={true} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
-                <ProtectedRoute isAccessible={true} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
-                <ProtectedRoute isAccessible={false} redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>
-            </Switch>
-        )
+        if(this.state.status!==""){
+            return (
+                <Switch>
+                    <Route path='/login' component={Login}></Route>
+                    <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
+                    <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
+                    <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>
+                </Switch>
+            )
+        } else {
+            return null;
+        }
     }
 
 };
