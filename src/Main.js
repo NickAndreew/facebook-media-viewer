@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Profile from './Profile';
 import Albums from './Albums';
 import Upload from './Upload';
@@ -9,7 +9,8 @@ class Main extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-			response: {}
+            response: {},
+            status: false
 		};
     }
     
@@ -28,8 +29,10 @@ class Main extends Component {
                 // this.statusChangeCallback(response);
                 if(response.status === "connected"){
                     console.log("user is logged in");
+                    this.setState({status: true});
                 } else {
                     console.log("user is not logged in");
+                    this.setState({status: false});
                 }
             });
 
@@ -61,14 +64,18 @@ class Main extends Component {
 	// }
 
     render(){
-        return (
-            <Switch>
-                <Route exact path='/login' component={Login}></Route>
-                <Route exact path='/profile' component={Profile}></Route>
-                <Route path='/albums' component={Albums}></Route>
-                <Route path='/upload' component={Upload}></Route>
-            </Switch>
-        );
+        if(!this.state.status){
+            return (<Redirect to='/login' />);
+        } else {
+            return (
+                <Switch>
+                    <Route exact path='/login' component={Login}></Route>
+                    <Route exact path='/profile' component={Profile}></Route>
+                    <Route path='/albums' component={Albums}></Route>
+                    <Route path='/upload' component={Upload}></Route>
+                </Switch>
+            );
+        }
     }
 };
 
