@@ -27,7 +27,7 @@ class Album extends Component {
             var photosList = [];
             console.log(resp.data);
             for(var i=0 ; i <= resp.data.length-1 ; i++){
-                window.FB.api('/'+resp.data[i].id+'/picture', function(response){
+                window.FB.api('/'+resp.data[i].id+'/picture?redirect=false', function(response){
                     console.log(response);
                     photosList.push(response.url);
                 }.bind(this));
