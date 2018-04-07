@@ -12,10 +12,10 @@ class AllAlbums extends Component {
     
     componentDidMount(){
         window.FB.api('/me?fields=albums',  function(resp) {
-            console.log(resp.data);
+            console.log(resp.albums.data);
             var albumsList = [];
-            for (var i=0; i <= resp.data.length-1 ;i++) {
-                albumsList.push(resp.data[i]);
+            for (var i=0; i <= resp.albums.data.length-1 ;i++) {
+                albumsList.push(resp.albums.data[i]);
             }
             this.setState({albums:albumsList});
         }.bind(this));
