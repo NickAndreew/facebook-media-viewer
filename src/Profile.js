@@ -3,16 +3,16 @@ import NavBar from './NavBar';
 
 class Profile extends Component {
 
-    // componentDidMount(){
-    //     window.FB.api('/me?fields=id,name,birthday,location,hometown,cover,picture.width(200)',  function(resp) {
-    //         console.log(resp);
-    //         document.getElementById("profileName").textContent = resp.name;
-    //         document.getElementById("birthdayDate").textContent = "Birthday date: "+resp.birthday;
-    //         document.getElementById("currentCity").textContent = "Current city:  "+resp.location.name;
-    //         document.getElementById("hometown").textContent = "Hometown: "+resp.hometown.name;
-    //         document.getElementById("profilePic").setAttribute("src", resp.picture.data.url);
-    //     });
-    // }
+    componentDidMount(){
+        window.FB.api('/me?fields=id,name,birthday,location,hometown,cover,picture.width(200)',  function(resp) {
+            console.log(resp);
+            document.getElementById("profileName").textContent = resp.name;
+            document.getElementById("birthdayDate").textContent = "Birthday date: "+resp.birthday;
+            document.getElementById("currentCity").textContent = "Current city:  "+resp.location.name;
+            document.getElementById("hometown").textContent = "Hometown: "+resp.hometown.name;
+            document.getElementById("profilePic").setAttribute("src", resp.picture.data.url);
+        });
+    }
 
     render(){
         return(
