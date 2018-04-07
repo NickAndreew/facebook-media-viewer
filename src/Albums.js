@@ -12,7 +12,7 @@ class Albums extends Component {
                 <div>ALBUMS</div>
                 <Switch>
                     <Route exact path='/albums' component={AllAlbums} />
-                    <Route path='/albums/:number' component={Album} />
+                    <Route path='/albums/:id' component={Album} />
                 </Switch>
             </div>
         );

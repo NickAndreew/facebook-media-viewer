@@ -1,22 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AlbumsAPI from './AlbumsAPI';
 import {Link} from 'react-router-dom';
 
-const Album = (props) => {
-    const album = AlbumsAPI.get(
-        parseInt(props.match.params.number, 10)
-    )
-
-    if (!album) {
-        return <div>Sorry, but the album was not found</div>
+class Album extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+		}
     }
-      
-    return (
-        <div>
-            <h1>{album.name} (#{album.number})</h1>
-            <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
-        </div>
-    )
+    
+    render (){
+        return (
+            <div>
+                <h1>{album.name} (#{album.id})</h1>
+                <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
+            </div>
+        )
+    }
 }   
 
 export default Album;
