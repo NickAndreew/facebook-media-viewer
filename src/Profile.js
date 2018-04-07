@@ -6,7 +6,6 @@ class Profile extends Component {
     componentDidMount(){
         window.FB.api('/me?fields=id,name,birthday,location,hometown,cover,picture.width(200)',  function(resp) {
             console.log(resp);
-            document.getElementById("mainPageDiv").setAttribute("style", "display: flex");
             document.getElementById("profileName").textContent = resp.name;
             document.getElementById("birthdayDate").textContent = "Birthday date: "+resp.birthday;
             document.getElementById("currentCity").textContent = "Current city:  "+resp.location.name;
@@ -22,7 +21,7 @@ class Profile extends Component {
                 <div>PROFILE</div>
                 <div className="profilePage">
                     <div>
-                        <img src="https://i.imgur.com/6oDNbeN.gif" alt="" />
+                        <img src="https://i.imgur.com/6oDNbeN.gif" alt="" id="profilePic" />
                     </div>
                     <div className="profileInfo">
                         <h1 className="infoH1" id="profileName">Firstname Lastname</h1>
