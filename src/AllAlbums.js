@@ -20,9 +20,9 @@ class AllAlbums extends Component {
             
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 albumsList.push(resp.albums.data[i]);
-                window.FB.api('/'+resp.albums.data[i].id+'/picture', function(responce){
-                    coversList.push(responce.data.url);
-                }.bind(this));
+                // window.FB.api('/'+resp.albums.data[i].id+'/picture', function(responce){
+                //     coversList.push(responce.data.url);
+                // }.bind(this));
             }
 
             this.setState({albums:albumsList, albumCovers:coversList});
@@ -39,7 +39,7 @@ class AllAlbums extends Component {
                             {
                                 this.state.albums.map(a => (
                                     <div className="albumCover" key={a.id} id={a.id}>
-                                        <Link to={`/albums/${a.id}`}>
+                                        <Link to={`/albums/${a.id}`} params={{name:a.name, id:a.id }}>
                                             <div className="albumOnHover">
                                                 <a className="albumOnHoverClick">
                                                     <h3>{a.name}</h3>
