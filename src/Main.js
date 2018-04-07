@@ -12,7 +12,9 @@ class Main extends Component {
 		this.state = {
             response: {},
             status: ""
-		};
+        };
+        
+        this.loadProfileInfo = this.loadProfileInfo.bind(this);
     }
     
     componentDidMount(){
@@ -31,7 +33,7 @@ class Main extends Component {
                 if(response.status === "connected"){
                     console.log("user is logged in");
                     this.setState({status: true});
-
+                    this.loadProfileInfo();
                 } else {
                     console.log("user is not logged in");
                     this.setState({status: false});
@@ -49,6 +51,17 @@ class Main extends Component {
 			fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+    }
+
+    loadProfileInfo(){
+        window.FB.api('/me?fields=id,name,birthday,location,hometown,cover,picture.width(200)',  function(resp) {
+            console.log(resp);
+            document.getElementById("profileName").textContent = resp.name;
+            document.getElementById("birthdayDate").textContent = "Birthday date: "+resp.birthday;
+            document.getElementById("currentCity").textContent = "Current city:  "+resp.location.name;
+            document.getElementById("hometown").textContent = "Hometown: "+resp.hometown.name;
+            document.getElementById("profilePic").setAttribute("src", resp.picture.data.url);
+        }.bind(this));
     }
 
     render(){
