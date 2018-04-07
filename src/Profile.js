@@ -24,10 +24,10 @@ class Profile extends Component {
                         <img src="https://i.imgur.com/6oDNbeN.gif" alt="" id="profilePic" />
                     </div>
                     <div className="profileInfo">
-                        <h1 className="infoH1" id="profileName">Firstname Lastname</h1>
-                        <h4 className="infoH4" id="birthdayDate">Birthday</h4>
-                        <h4 className="infoH4" id="currentCity">Current City</h4>
-                        <h4 className="infoH4" id="hometown">Hometown</h4>
+                        <h1 className="infoH1" id="profileName"></h1>
+                        <h4 className="infoH4" id="birthdayDate"></h4>
+                        <h4 className="infoH4" id="currentCity"></h4>
+                        <h4 className="infoH4" id="hometown"></h4>
                     </div>
                 </div>
             </div>
