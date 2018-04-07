@@ -41,10 +41,10 @@ class AllAlbums extends Component {
                                     <div className="albumCover" key={a.id} id={a.id}>
                                         <Link to={`/albums/${a.id}`} params={{name:a.name, id:a.id }}>
                                             <div className="albumOnHover">
-                                                <a className="albumOnHoverClick">
+                                                <div className="albumOnHoverClick">
                                                     <h3>{a.name}</h3>
                                                     <p>{a.created_time}</p>
-                                                </a>
+                                                </div>
                                             </div>
                                         </Link>
                                     </div>
