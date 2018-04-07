@@ -39,9 +39,9 @@ class Album extends Component {
     
     render (){
 
-        console.log(this.state.photos);
         
         if(this.state.photos!==""){
+            console.log(this.state.photos);
             return (
                 <div>
                     <h1>{this.state.albumName}</h1>
