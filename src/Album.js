@@ -38,7 +38,11 @@ class Album extends Component {
     }
     
     render (){
+
+        console.log(this.state.photos);
+        
         return (
+
             <div>
                 <h1>{this.state.albumName}</h1>
                 <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
