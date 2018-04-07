@@ -9,12 +9,10 @@ class Album extends Component {
             albumName: "",
             photos: ""
         }
-        
         this.loadAlbumContent = this.loadAlbumContent.bind(this);
-
     }
 
-    componentDidMount(){
+    componentWillMount(){
         window.FB.api('/'+this.props.match.params.id, function(resp){
             this.setState({albumName: resp.name});
         }.bind(this));
@@ -28,7 +26,7 @@ class Album extends Component {
             console.log(resp.data);
             for(var i=0 ; i <= resp.data.length-1 ; i++){
                 window.FB.api('/'+resp.data[i].id+'/picture?redirect=false', function(response){
-                    console.log(response.data.url);
+                    // console.log(response.data.url);
                     photosList.push(response.data.url);
                 }.bind(this));
             }
