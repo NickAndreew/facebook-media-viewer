@@ -49,7 +49,7 @@ class Album extends Component {
                     <div className="albumsDiv">
                         {
                             this.state.photos.map(a => (
-                                <div className="albumCover" key={a} style={{ backgroundImage : url(a) }}>
+                                <div className="albumCover" key={a} style={{ backgroundImage : 'url('+a+')' }}>
                                     
                                 </div>
                             ))
