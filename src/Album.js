@@ -12,7 +12,7 @@ class Album extends Component {
     render (){
         return (
             <div>
-                <h1>{album.name} (#{album.id})</h1>
+                <h1>{props.name} (#{props.id})</h1>
                 <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
             </div>
         )
