@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AlbumsAPI from './AlbumsAPI';
 import {Link} from 'react-router-dom';
 
 class AllAlbums extends Component {
