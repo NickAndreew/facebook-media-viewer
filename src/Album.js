@@ -1,36 +1,52 @@
-// import React from 'react';
-// import AlbumsAPI from './AlbumsAPI';
-// import {Link} from 'react-router-dom';
-
-// const Album = (props) => {
-//     const albumId = props.match.params.id;
-//     const albumName = props.match.params.name;
-      
-//     return (
-//         <div>
-//             <h1>{albumName} (#{albumId})</h1>
-//             <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
-//         </div>
-//     )
-// }   
-
-// export default Album;
-
-
 import React, {Component} from 'react';
 import AlbumsAPI from './AlbumsAPI';
 import {Link} from 'react-router-dom';
 
 class Album extends Component {
     constructor(props) {
-		super(props);
+        super(props);
+        this.state = {
+            albumName: "",
+            photos: []
+        }
+        
+        this.loadAlbumContent = this.loadAlbumContent.bind(this);
+
+    }
+
+    componentDidMount(){
+        window.FB.api('/'+this.props.match.params.id, function(resp){
+            this.setState({albumName: resp.name});
+        }.bind(this));
+
+        this.loadAlbumContent();
+    }
+
+    loadAlbumContent(){
+        window.FB.api('/'+this.props.match.params.id+'/photos', function(resp){
+            var photosList = [];
+            for(var i=0 ; i <= resp.data.length-1 ; i++){
+                window.FB.api('/'+resp.data[i].id+'/picture', function(responce){
+                    photosList.push(response.data.url);
+                }.bind(this));
+            }
+        }.bind(this));
     }
     
     render (){
         return (
             <div>
-                <h1>{this.props.match.params.name} (#{this.props.match.params.id})</h1>
+                <h1>{this.state.albumName}</h1>
                 <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
+                <div className="albumsDiv">
+                    {
+                        this.state.photos.map(a => (
+                            <div className="albumCover" key={a} style={"background-image:url("+a+")"}>
+                                
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         )
     }
