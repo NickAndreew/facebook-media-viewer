@@ -3,20 +3,38 @@ import AlbumsAPI from './AlbumsAPI';
 import {Link} from 'react-router-dom';
 
 class AllAlbums extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+			albums: [],
+		}
+    }
+    
+    componentDidMount(){
+        window.FB.api('/me?fields=albums',  function(resp) {
+            console.log(resp.data);
+            var albumsList = [];
+            for (var i=0; i <= resp.data.length-1 ;i++) {
+                albumsList.push(resp.data[i]);
+            }
+            this.setState({albums:albumsList});
+        }.bind(this));
+    }
+
     render() {
         return (
             <div>
                 <div>
                     <div className="albumsDiv"> 
                         {
-                            AlbumsAPI.all().map(a => (
+                            this.state.albums.map(a => (
                             
-                            <div className="albumCover" key={a.number}>
-                                <Link to={`/albums/${a.number}`}>
+                            <div className="albumCover" key={a.id}>
+                                <Link to={`/albums/${a.id}`}>
                                     <div className="albumOnHover">
                                         <a className="albumOnHoverClick">
                                             <h3>{a.name}</h3>
-                                            <p>Album Title</p>
+                                            <p>{a.created_time}</p>
                                         </a>
                                     </div>
                                 </Link>

@@ -13,8 +13,6 @@ class Main extends Component {
             response: {},
             status: ""
         };
-        
-        this.loadProfileInfo = this.loadProfileInfo.bind(this);
     }
     
     componentDidMount(){
