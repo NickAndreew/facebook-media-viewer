@@ -7,7 +7,7 @@ class Album extends Component {
         super(props);
         this.state = {
             albumName: "",
-            photos: []
+            photos: ""
         }
         
         this.loadAlbumContent = this.loadAlbumContent.bind(this);
@@ -41,22 +41,25 @@ class Album extends Component {
 
         console.log(this.state.photos);
         
-        return (
-
-            <div>
-                <h1>{this.state.albumName}</h1>
-                <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
-                <div className="albumsDiv">
-                    {
-                        this.state.photos.map(a => (
-                            <div className="albumCover" key={a} style={{ 'background-image':'url('+a+')'}}>
-                                
-                            </div>
-                        ))
-                    }
+        if(this.state.photos!==""){
+            return (
+                <div>
+                    <h1>{this.state.albumName}</h1>
+                    <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
+                    <div className="albumsDiv">
+                        {
+                            this.state.photos.map(a => (
+                                <div className="albumCover" key={a} style={{ 'background-image':'url('+a+')'}}>
+                                    
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return null;
+        }
     }
 }   
 
