@@ -25,11 +25,14 @@ class Album extends Component {
     loadAlbumContent(){
         window.FB.api('/'+this.props.match.params.id+'/photos', function(resp){
             var photosList = [];
-            for(var i=0 ; i <= resp.data.length-1 ; i++){
+            
+            for(var i=0 ; i <= resp.data.length ; i++){
                 window.FB.api('/'+resp.data[i].id+'/picture', function(response){
                     photosList.push(response.data.url);
                 }.bind(this));
             }
+
+            this.setState({photos: photosList});
         }.bind(this));
     }
     
