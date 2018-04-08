@@ -21,7 +21,7 @@ class AllAlbums extends Component {
                 obj.data = resp.albums.data[i];
                 
                 obj.cover = this.getAlbumCover(resp.albums.data[i].id);
-                console.log(getAlbumCover(resp.albums.data[i].id));
+                console.log(this.getAlbumCover(resp.albums.data[i].id));
                 console.log(obj);
                 albumsList.push(obj);
             }
