@@ -20,6 +20,7 @@ class AllAlbums extends Component {
                 var obj = {data:'', cover: ''};
                 obj.data = resp.albums.data[i];
                 window.FB.api('/'+resp.albums.data[i].id+'/picture', function(responce){
+                    console.log(response);
                     obj.cover = responce.data.url;
                 }.bind(this));
                 albumsList.push(obj);
