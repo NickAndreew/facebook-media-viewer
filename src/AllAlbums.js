@@ -15,14 +15,13 @@ class AllAlbums extends Component {
             
             var albumsList = [];
 
-            
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 var obj = {data:'', cover: ''};
                 
                 obj.data = resp.albums.data[i];
                 
                 obj.cover = this.getAlbumCover(resp.albums.data[i].id);
-
+                console.log(this.getAlbumCover(resp.albums.data[i].id));
                 console.log(obj);
                 albumsList.push(obj);
             }
@@ -32,8 +31,8 @@ class AllAlbums extends Component {
     }
 
     getAlbumCover(id){
-        window.FB.api('/'+id+'/picture?redirect=false', function(responce){
-            return responce.data.url;
+        window.FB.api('/'+id+'/picture?redirect=false', function(response){
+            return response.data.url;
         }.bind(this))
     }
 
