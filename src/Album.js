@@ -25,7 +25,7 @@ class Album extends Component {
 
         window.FB.api('/'+this.props.match.params.id+'/photos', function(resp){
             
-            console.log(resp.data);
+            // console.log(resp.data);
             for(var i=0 ; i <= resp.data.length-1 ; i++){
                 window.FB.api('/'+resp.data[i].id+'/picture?redirect=false', function(response){
                     // console.log(response.data.url);
@@ -40,7 +40,7 @@ class Album extends Component {
     }
     
     render (){
-        console.log(this.state.photos);
+        // console.log(this.state.photos);
         
         if(this.state.photos.length>0){
             console.log(this.state.photos);
