@@ -6,7 +6,9 @@ class AllAlbums extends Component {
 		super(props);
 		this.state = {
             albums: []
-		}
+        }
+        
+        this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
     componentDidMount(){
