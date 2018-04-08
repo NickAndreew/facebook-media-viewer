@@ -21,8 +21,10 @@ class Album extends Component {
     }
 
     loadAlbumContent(){
+        var photosList = [];
+
         window.FB.api('/'+this.props.match.params.id+'/photos', function(resp){
-            var photosList = [];
+            
             console.log(resp.data);
             for(var i=0 ; i <= resp.data.length-1 ; i++){
                 window.FB.api('/'+resp.data[i].id+'/picture?redirect=false', function(response){
@@ -33,10 +35,12 @@ class Album extends Component {
 
             this.setState({photos: photosList});
         }.bind(this));
+
+        this.setState({photos: photosList});
     }
     
     render (){
-        console.log(this.state.photos);
+        // console.log(this.state.photos);
         
         if(this.state.photos.length>0){
             console.log(this.state.photos);
