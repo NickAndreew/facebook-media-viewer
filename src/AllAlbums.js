@@ -31,9 +31,11 @@ class AllAlbums extends Component {
     }
 
     getAlbumCover(id){
+        var url = '';
         window.FB.api('/'+id+'/picture?redirect=false', function(response){
-            return response.data.url;
+            url = response.data.url;
         }.bind(this))
+        return url;
     }
 
     render() {
