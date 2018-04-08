@@ -40,7 +40,7 @@ class Album extends Component {
     }
     
     render (){
-        // console.log(this.state.photos);
+        console.log(this.state.photos);
         
         if(this.state.photos.length>0){
             console.log(this.state.photos);
