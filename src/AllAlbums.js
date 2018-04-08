@@ -20,7 +20,7 @@ class AllAlbums extends Component {
                 var obj = {data:'', cover: ''};
                 obj.data = resp.albums.data[i];
                 window.FB.api('/'+resp.albums.data[i].id+'/picture?redirect=false', function(responce){
-                    console.log(responce);
+                    console.log(responce.data.url);
                     obj.cover = responce.data.url;
                 }.bind(this));
                 albumsList.push(obj);
@@ -39,7 +39,7 @@ class AllAlbums extends Component {
                         <div className="albumsDiv"> 
                             {
                                 this.state.albums.map(a => (
-                                    <div className="albumCover" key={a.data.id} id={a.data.id}>
+                                    <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
                                         <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
                                             <div className="albumOnHover">
                                                 <div className="albumOnHoverClick">
