@@ -37,6 +37,7 @@ class AllAlbums extends Component {
         window.FB.api('/'+id+'/picture?redirect=false', function(response){
             url = response.data.url;
         })
+        console.log(url);
         return url;
     }
 
