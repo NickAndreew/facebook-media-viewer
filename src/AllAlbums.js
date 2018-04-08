@@ -5,8 +5,7 @@ class AllAlbums extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            albums: [],
-            albumCovers:[]
+            albums: []
 		}
     }
     
@@ -15,34 +14,36 @@ class AllAlbums extends Component {
             console.log(resp.albums.data);
             
             var albumsList = [];
-            var coversList = [];
+
             
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
-                albumsList.push(resp.albums.data[i]);
-                // window.FB.api('/'+resp.albums.data[i].id+'/picture', function(responce){
-                //     coversList.push(responce.data.url);
-                // }.bind(this));
+                var obj = {data:'', cover: ''};
+                obj.data = resp.albums.data[i];
+                window.FB.api('/'+resp.albums.data[i].id+'/picture', function(responce){
+                    obj.cover = responce.data.url;
+                }.bind(this));
+                albumsList.push(obj);
             }
 
-            this.setState({albums:albumsList, albumCovers:coversList});
+            this.setState({ albums : albumsList });
         }.bind(this));
     }
 
     render() {
-        if(this.state.albumCovers!==""){
-            console.log(this.state.albumCovers);
+        if(this.state.albums!==""){
+            console.log(this.state.albums);
             return (
                 <div>
                     <div>
                         <div className="albumsDiv"> 
                             {
                                 this.state.albums.map(a => (
-                                    <div className="albumCover" key={a.id} id={a.id}>
-                                        <Link to={`/albums/${a.id}`} params={{name:a.name, id:a.id }}>
+                                    <div className="albumCover" key={a.data.id} id={a.data.id}>
+                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
                                             <div className="albumOnHover">
                                                 <div className="albumOnHoverClick">
-                                                    <h3>{a.name}</h3>
-                                                    <p>{a.created_time}</p>
+                                                    <h3>{a.data.name}</h3>
+                                                    <p>{a.data.created_time}</p>
                                                 </div>
                                             </div>
                                         </Link>

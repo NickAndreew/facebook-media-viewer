@@ -33,7 +33,7 @@ class Album extends Component {
                 }.bind(this));
             }
 
-            this.setState({photos: photosList});
+            // this.setState({photos: photosList});
         }.bind(this));
 
         this.setState({photos: photosList});
