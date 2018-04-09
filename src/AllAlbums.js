@@ -51,7 +51,7 @@ class AllAlbums extends Component {
                     <div>
                         <div className="albumsDiv"> 
                             {
-                                await this.state.albums.map(a => (
+                                this.state.albums.map(a => (
                                     console.log(a.cover),
                                     <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
                                         <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
