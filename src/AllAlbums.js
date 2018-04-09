@@ -22,7 +22,10 @@ class AllAlbums extends Component {
                 
                 obj.data = resp.albums.data[i];
                 
-                obj.cover = await this.getAlbumCover(resp.albums.data[i].id);
+                const call = await window.FB.api('/'+resp.albums.data[i].id+'/picture?redirect=false');
+                const url = await call.data.url;
+
+                obj.cover = url;
                 console.log("Cover : "+obj.cover);
                 console.log("Obj : "+obj);
                 albumsList.push(obj);
@@ -35,14 +38,14 @@ class AllAlbums extends Component {
 
     }
 
-    async getAlbumCover(id){
-        var url = '';
-        window.FB.api('/'+id+'/picture?redirect=false', function(response){
-            url = response.data.url;
-            console.log(url);
-            return url;
-        }.bind(this))
-    }
+    // async getAlbumCover(id){
+    //     var url = '';
+    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
+    //         url = response.data.url;
+    //         console.log(url);
+    //         return url;
+    //     }.bind(this))
+    // }
 
     render() {
         if(this.state.albums!==""){
