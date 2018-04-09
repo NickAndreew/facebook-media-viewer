@@ -12,19 +12,19 @@ class AllAlbums extends Component {
     }
     
     async componentDidMount(){
-        window.FB.api('/me?fields=albums', async function(resp) {
-            const responce = await resp;
+        window.FB.api('/me?fields=albums', function(resp) {
             
-            console.log(responce);
+            console.log(resp);
             
             var albumsList = [];
 
-            for (var i=0 ; i <= responce.albums.data.length-1 ; i++) {
+            for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 var obj = {data:'', cover: ''};
                 
-                obj.data = responce.albums.data[i];
+                obj.data = resp.albums.data[i];
                 var id = obj.data.id;
                 console.log(id);
+                
                 window.FB.api('/'+id+'/picture?redirect=false', function(response){
                     obj.cover = response.data.url;
                     console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
