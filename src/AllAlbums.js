@@ -13,7 +13,9 @@ class AllAlbums extends Component {
     
     async componentDidMount(){
         window.FB.api('/me?fields=albums', async function(resp) {
-            console.log(resp.albums.data);
+            const responce = await resp;
+            
+            console.log(responce);
             
             var albumsList = [];
 
