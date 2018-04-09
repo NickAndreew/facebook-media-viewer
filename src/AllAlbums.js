@@ -29,7 +29,7 @@ class AllAlbums extends Component {
                     obj.cover = response.data.url;
                     console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
                     albumsList.push(obj);
-                }.bind(this));
+                });
             }
             console.log(albumsList);
             this.setState({ albums : albumsList });
