@@ -23,13 +23,13 @@ class AllAlbums extends Component {
                 var obj = {data:'', cover: ''};
                 
                 obj.data = responce.albums.data[i];
-                console.log(responce.albums.data[i].id);
-                window.FB.api('/'+responce.albums.data[i].id+'/picture?redirect=false', function(response){
+                var id = obj.data.id;
+                console.log(id);
+                window.FB.api('/'+id+'/picture?redirect=false', function(response){
                     obj.cover = response.data.url;
                     console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
                     albumsList.push(obj);
                 }.bind(this));
-                // obj.cover = await url;
             }
             console.log(albumsList);
             this.setState({ albums : albumsList });
