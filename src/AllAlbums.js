@@ -32,13 +32,6 @@ class AllAlbums extends Component {
 
         const value = await this.state.albums;
         console.log(value);
-        
-        
-        // for(var i=0; i <= this.state.albums.length ;i++){
-        //     const resp =  await window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false');
-        //     const url = await resp.data.url;
-        //     console.log(url);
-        // }
 
     }
 
@@ -51,14 +44,14 @@ class AllAlbums extends Component {
         }.bind(this))
     }
 
-    render() {
+    async render() {
         if(this.state.albums!==""){
             return (
                 <div>
                     <div>
                         <div className="albumsDiv"> 
                             {
-                                this.state.albums.map(a => (
+                                await this.state.albums.map(a => (
                                     console.log(a.cover),
                                     <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
                                         <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
