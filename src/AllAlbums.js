@@ -14,7 +14,7 @@ class AllAlbums extends Component {
         const call = await window.FB.api('/me?fields=albums');
         const responce = await call;
         
-        console.log(responce);
+        console.log(call);
         
         var albumsList = [];
 
