@@ -30,12 +30,13 @@ class AllAlbums extends Component {
             this.setState({ albums : albumsList });
         }.bind(this));
 
-        for(var i=0; i <= this.state.albums.length ;i++){
-            window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false', function(response){
-                var url = response.data.url;
-                this.state.albums[i].cover = url;
-            }.bind(this))
-        }
+        console.log(this.state.albums);
+        // for(var i=0; i <= this.state.albums.length ;i++){
+        //     window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false', function(response){
+        //         var url = response.data.url;
+        //         this.state.albums[i].cover = url;
+        //     }.bind(this))
+        // }
     }
 
     // getAlbumCover(id){
