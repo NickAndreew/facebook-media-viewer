@@ -52,12 +52,12 @@ class AllAlbums extends Component {
     render() {
         if(this.state.albums!==""){
             return (
+                console.log(this.state.albums),
                 <div>
                     <div>
                         <div className="albumsDiv"> 
                             {
                                 this.state.albums.map(a => (
-                                    console.log(a.cover),
                                     <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
                                         <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
                                             <div className="albumOnHover">
