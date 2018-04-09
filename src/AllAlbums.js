@@ -11,7 +11,7 @@ class AllAlbums extends Component {
         // this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
-    componentDidMount(){
+    async componentDidMount(){
         window.FB.api('/me?fields=albums',  function(resp) {
             console.log(resp.albums.data);
             
@@ -31,12 +31,13 @@ class AllAlbums extends Component {
         }.bind(this));
 
         console.log(this.state.albums);
-        // for(var i=0; i <= this.state.albums.length ;i++){
-        //     window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false', function(response){
-        //         var url = response.data.url;
-        //         this.state.albums[i].cover = url;
-        //     }.bind(this))
-        // }
+        
+        for(var i=0; i <= this.state.albums.length ;i++){
+            const resp =  await window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false');
+            const url = await resp.data.url;
+            console.log(url);
+        }
+
     }
 
     // getAlbumCover(id){
