@@ -12,7 +12,7 @@ class AllAlbums extends Component {
     }
     
     async componentDidMount(){
-        window.FB.api('/me?fields=albums',  function(resp) {
+        window.FB.api('/me?fields=albums', async function(resp) {
             console.log(resp.albums.data);
             
             var albumsList = [];
