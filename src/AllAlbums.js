@@ -26,9 +26,9 @@ class AllAlbums extends Component {
                 // var cover = '';
 
                 const responce = window.FB.api('/'+id+'/picture?redirect=false');
-                const cover = responce.data.url;
+                // const cover = responce.data.url;
                 // , function(response){
-                console.log(cover);                   
+                console.log(responce);                   
                     // cover = response.data.url;
                 // });
 
