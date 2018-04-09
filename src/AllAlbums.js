@@ -19,17 +19,15 @@ class AllAlbums extends Component {
             var albumsList = [];
 
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
-                var obj = {data:'', cover: ''};
-                
-                obj.data = resp.albums.data[i];
-                var id = obj.data.id;
+                var data = resp.albums.data[i];
+                var id = data.id;
                 console.log(id);
                 
                 window.FB.api('/'+id+'/picture?redirect=false', function(response){
                     console.log(response.data.url);                   
-                    obj.cover = response.data.url;
-                    console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
-                    // albumsList.push(obj);
+                    var cover = response.data.url;
+                    // console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
+                    albumsList.push({data, cover});
                 });
             }
             console.log(albumsList);
