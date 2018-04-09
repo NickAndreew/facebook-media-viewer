@@ -23,12 +23,14 @@ class AllAlbums extends Component {
                 var id = data.id;
                 console.log(id);
                 
-                var cover = '';
+                // var cover = '';
 
-                window.FB.api('/'+id+'/picture?redirect=false', function(response){
-                    console.log(response.data.url);                   
-                    cover = response.data.url;
-                });
+                const resp = await window.FB.api('/'+id+'/picture?redirect=false');
+                const cover = await resp.data.url;
+                // , function(response){
+                console.log(cover);                   
+                    // cover = response.data.url;
+                // });
 
                 albumsList.push({data, cover});
 
