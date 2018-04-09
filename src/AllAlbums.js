@@ -8,7 +8,7 @@ class AllAlbums extends Component {
             albums: []
         }
         
-        // this.getAlbumCover = this.getAlbumCover.bind(this);
+        this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
     async componentDidMount(){
@@ -22,16 +22,16 @@ class AllAlbums extends Component {
                 
                 obj.data = resp.albums.data[i];
                 
-                obj.cover = this.getAlbumCover(resp.albums.data[i].id);
-                console.log(this.getAlbumCover(resp.albums.data[i].id));
-                console.log(obj);
+                obj.cover = await this.getAlbumCover(resp.albums.data[i].id);
+                console.log("Cover : "+obj.cover);
+                console.log("Obj : "+obj);
                 albumsList.push(obj);
             }
             this.setState({ albums : albumsList });
         }.bind(this));
 
-        
-        console.log(this.state.albums);
+        const value = await this.state.albums;
+        console.log(value);
         
         
         // for(var i=0; i <= this.state.albums.length ;i++){
@@ -42,7 +42,7 @@ class AllAlbums extends Component {
 
     }
 
-    getAlbumCover(id){
+    async getAlbumCover(id){
         var url = '';
         window.FB.api('/'+id+'/picture?redirect=false', function(response){
             url = response.data.url;
