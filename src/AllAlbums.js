@@ -44,7 +44,7 @@ class AllAlbums extends Component {
         }.bind(this))
     }
 
-    async render() {
+    render() {
         if(this.state.albums!==""){
             return (
                 <div>
