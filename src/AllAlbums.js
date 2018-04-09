@@ -20,7 +20,7 @@ class AllAlbums extends Component {
             var albumsList = [];
 
             for (var i=0 ; i <= responce.albums.data.length-1 ; i++) {
-                const obj = {data:'', cover: ''};
+                var obj = {data:'', cover: ''};
                 
                 obj.data = responce.albums.data[i];
                 var url = '';
