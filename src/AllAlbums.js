@@ -32,7 +32,7 @@ class AllAlbums extends Component {
 
         for(var i=0; i <= this.state.albums.length ;i++){
             window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false', function(response){
-                url = response.data.url;
+                var url = response.data.url;
                 this.state.albums[i].cover = url;
             }.bind(this))
         }
