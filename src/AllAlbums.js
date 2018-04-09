@@ -22,31 +22,33 @@ class AllAlbums extends Component {
                 
                 obj.data = resp.albums.data[i];
                 
-                // obj.cover = this.getAlbumCover(resp.albums.data[i].id);
-                // console.log(this.getAlbumCover(resp.albums.data[i].id));
+                obj.cover = this.getAlbumCover(resp.albums.data[i].id);
+                console.log(this.getAlbumCover(resp.albums.data[i].id));
                 console.log(obj);
                 albumsList.push(obj);
             }
             this.setState({ albums : albumsList });
         }.bind(this));
 
+        
         console.log(this.state.albums);
         
-        for(var i=0; i <= this.state.albums.length ;i++){
-            const resp =  await window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false');
-            const url = await resp.data.url;
-            console.log(url);
-        }
+        
+        // for(var i=0; i <= this.state.albums.length ;i++){
+        //     const resp =  await window.FB.api('/'+this.state.albums[i].data.id+'/picture?redirect=false');
+        //     const url = await resp.data.url;
+        //     console.log(url);
+        // }
 
     }
 
-    // getAlbumCover(id){
-    //     var url = '';
-    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
-    //         url = response.data.url;
-    //         return url;
-    //     }.bind(this))
-    // }
+    getAlbumCover(id){
+        var url = '';
+        window.FB.api('/'+id+'/picture?redirect=false', function(response){
+            url = response.data.url;
+            return url;
+        }.bind(this))
+    }
 
     render() {
         if(this.state.albums!==""){
