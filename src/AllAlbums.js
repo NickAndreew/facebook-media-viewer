@@ -27,7 +27,7 @@ class AllAlbums extends Component {
                 window.FB.api('/'+responce.albums.data[i].id+'/picture?redirect=false', async function(response){
                     url = response.data.url;
                     obj.cover = await url;
-                });
+                }.bind(this));
 
                 // obj.cover = await url;
                 console.log("Cover : "+obj.cover);
