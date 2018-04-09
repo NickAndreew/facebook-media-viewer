@@ -8,7 +8,7 @@ class AllAlbums extends Component {
             albums: []
         }
         
-        this.getAlbumCover = this.getAlbumCover.bind(this);
+        // this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
     async componentDidMount(){
