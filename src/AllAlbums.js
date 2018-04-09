@@ -7,32 +7,34 @@ class AllAlbums extends Component {
 		this.state = {
             albums: []
         }
+        
         // this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
     async componentDidMount(){
-        const call = await window.FB.api('/me?fields=albums');
-        const responce = await call;
-        
-        console.log(call);
-        
-        var albumsList = [];
-
-        for (var i=0 ; i <= responce.albums.data.length-1 ; i++) {
-            var obj = {data:'', cover: ''};
+        window.FB.api('/me?fields=albums', async function(resp) {
+            const responce = await resp;
             
-            obj.data = responce.albums.data[i];
+            console.log(responce);
             
-            const call1 = await window.FB.api('/'+responce.albums.data[i].id+'/picture?redirect=false');
-            const url = await call1.data.url;
+            var albumsList = [];
 
-            obj.cover = url;
-            console.log("Cover : "+obj.cover);
-            console.log("Obj : "+obj);
-            albumsList.push(obj);
-        }
-        this.setState({ albums : albumsList });
+            for (var i=0 ; i <= responce.albums.data.length-1 ; i++) {
+                var obj = {data:'', cover: ''};
+                
+                obj.data = responce.albums.data[i];
+                var url = null;
+                window.FB.api('/'+responce.albums.data[i].id+'/picture?redirect=false', function(response){
+                    url = response.data.url;
+                });
 
+                obj.cover = await url;
+                console.log("Cover : "+obj.cover);
+                console.log("Obj : "+obj);
+                albumsList.push(obj);
+            }
+            this.setState({ albums : albumsList });
+        }.bind(this));
 
         const value = await this.state.albums;
         console.log(value);
