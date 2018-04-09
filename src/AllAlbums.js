@@ -27,7 +27,7 @@ class AllAlbums extends Component {
                     console.log(response.data.url);                   
                     var cover = response.data.url;
                     // console.log("ID : "+obj.data.id+", Name : "+obj.data.name+", Cover : "+obj.cover);
-                    albumsList.push({data: data, cover});
+                    albumsList.push({data: resp.albums.data[i], cover});
                 });
             }
             console.log(albumsList);
