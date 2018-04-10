@@ -12,11 +12,9 @@ class AllAlbums extends Component {
     }
     
     async componentDidMount(){
+        var albumsData = [];
+
         window.FB.api('/me?fields=albums', function(resp) {
-            
-            console.log(resp);
-            
-            var albumsList = [];
 
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 var data = resp.albums.data[i];
@@ -28,30 +26,32 @@ class AllAlbums extends Component {
                 // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
                 //     return response.data.url;
                 // });
-                console.log(this.getAlbumCover(id));
+                console.log();
 
-                albumsList.push({data, cover});
+                albumsData.push({data, cover});
 
             }
 
-            console.log(albumsList);
-            this.setState({ albums : albumsList });
+            // console.log(albumsList);
+            // this.setState({ albums : albumsList });
         
         }.bind(this));
+
+        console.log(albumsData);
 
         const value = await this.state.albums;
         console.log(value);
 
     }
 
-    async getAlbumCover(id){
-        var url = '';
-        window.FB.api('/'+id+'/picture?redirect=false', function(response){
-            url = response.data.url;
-            console.log(url);
-            return url;
-        })
-    }
+    // async getAlbumCover(id){
+    //     var url = '';
+    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
+    //         url = response.data.url;
+    //         console.log(url);
+    //         return url;
+    //     })
+    // }
 
     render() {
         if(this.state.albums!==""){
