@@ -148,6 +148,7 @@ class DropFiles extends React.Component {
 	render() {		
 		return (
         <div>
+			<h3>{this.props.name}</h3>
             <Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
             <DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
                 <div className="dropFilesDiv control-group" id="dropBox">
