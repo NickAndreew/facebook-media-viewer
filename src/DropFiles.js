@@ -8,7 +8,8 @@ class DropFiles extends React.Component {
 		super(props);
 		this.state = {
 			filesToUpload: [],
-			accessToken: ''
+			accessToken: '',
+			albumName: ''
 		}
 	
 		this.handleDrop = this.handleDrop.bind(this);
@@ -17,6 +18,12 @@ class DropFiles extends React.Component {
 		this.buttonClick = this.buttonClick.bind(this);
 	}
 
+	componentDidMount(){
+		window.FB.api(this.props.match.params, function(resp){
+			var name = resp.name;
+			this.setState({albumName: name});
+		});
+	}
 
 	move() {
 		var elem = document.getElementById("myBar");   
@@ -147,21 +154,20 @@ class DropFiles extends React.Component {
 	 
 	render() {		
 		return (
-		console.log(this.props.match.params),
-        <div>
-			<h3></h3>
-            <Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
-            <DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
-                <div className="dropFilesDiv control-group" id="dropBox">
-                    <div className="backgroundText"></div>
-                    <div id="myProgress">
-                        <div id="myBar"></div>
-                    </div>
-                </div>
-                    
-                    <button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
-            </DropToUpload>
-        </div>
+			<div>
+				<h3>{this.state.albumName}</h3>
+				<Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
+				<DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
+					<div className="dropFilesDiv control-group" id="dropBox">
+						<div className="backgroundText"></div>
+						<div id="myProgress">
+							<div id="myBar"></div>
+						</div>
+					</div>
+						
+						<button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
+				</DropToUpload>
+			</div>
 		);
 	}
 }
