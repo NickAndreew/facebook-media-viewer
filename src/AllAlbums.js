@@ -28,7 +28,8 @@ class AllAlbums extends Component {
                 // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
                 //     return response.data.url;
                 // });
-                console.log(this.getAlbumCover(id));
+                cover = await this.getAlbumCover(id);
+                console.log(cover);
 
                 albumsList.push({data, cover});
 
@@ -44,7 +45,7 @@ class AllAlbums extends Component {
 
     }
 
-    getAlbumCover = (id) => {
+    async getAlbumCover(id){
         var url = '';
         window.FB.api('/'+id+'/picture?redirect=false', function(response){
             url = response.data.url;
