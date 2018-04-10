@@ -39,19 +39,15 @@ class AllAlbums extends Component {
             this.setState({ albums : albumsList });
         
         }.bind(this));
-
-        const value = await this.state.albums;
-        console.log(value);
-
     }
 
     async getAlbumCover(id){
         var url = '';
-        window.FB.api('/'+id+'/picture?redirect=false', function(response){
+        window.FB.api('/'+id+'/picture?redirect=false', async function(response){
             url = response.data.url;
         })
         console.log(url);
-        return url;
+        return await url;
     }
 
     render() {

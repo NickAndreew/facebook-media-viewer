@@ -165,8 +165,7 @@ class DropFiles extends React.Component {
 								<div id="myBar"></div>
 							</div>
 						</div>
-							
-							<button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
+						<button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
 					</DropToUpload>
 				</div>
 			);
