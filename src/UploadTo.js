@@ -31,11 +31,11 @@ class UploadTo extends Component {
             <div>
                 {
                     this.state.albums.map(a => (
-                    <div key={a.id}>
-                        <Link to={`/upload/${a.id}`} params={{ name:a.name, id:a.id }}>
-                            <h3 className="h4Cl">{a.name}</h3>    
-                        </Link>
-                    </div>
+                        <div key={a.id}>
+                            <Link to={`/upload/${a.id}`} params={{ name:a.name, id:a.id }}>
+                                <h3 className="h4Cl">{a.name}</h3>    
+                            </Link>
+                        </div>
                     ))
                 }
             </div>
