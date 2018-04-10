@@ -22,7 +22,7 @@ class DropFiles extends React.Component {
 		window.FB.api('/'+this.props.match.params+'/', function(resp){
 			var name = resp.name;
 			this.setState({albumName: name});
-		});
+		}.bind(this));
 	}
 
 	move() {
