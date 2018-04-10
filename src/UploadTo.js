@@ -42,7 +42,7 @@ class UploadTo extends Component {
         return (
             <div>
                 {
-                    AlbumsAPI.all().map(a => (
+                    this.state.albums.map(a => (
                     <div key={a.id}>
                         <Link to={`/upload/${a.id}`}>
                             <h3 className="h4Cl">{a.name}</h3>    
