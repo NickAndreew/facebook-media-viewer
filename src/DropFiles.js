@@ -147,7 +147,7 @@ class DropFiles extends React.Component {
 	 
 	render() {		
 		return (
-		console.log(this.props.name),
+		console.log(this.props),
         <div>
 			<h3></h3>
             <Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
