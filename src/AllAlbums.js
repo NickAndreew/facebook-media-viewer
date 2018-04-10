@@ -12,9 +12,11 @@ class AllAlbums extends Component {
     }
     
     async componentDidMount(){
-        var albumsData = [];
-
         window.FB.api('/me?fields=albums', function(resp) {
+            
+            console.log(resp);
+            
+            var albumsList = [];
 
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 var data = resp.albums.data[i];
@@ -26,39 +28,30 @@ class AllAlbums extends Component {
                 // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
                 //     return response.data.url;
                 // });
-                console.log();
+                console.log(this.getAlbumCover(id));
 
-                albumsData.push({data, cover});
+                albumsList.push({data, cover});
 
             }
 
-            // console.log(albumsList);
-            // this.setState({ albums : albumsList });
+            console.log(albumsList);
+            this.setState({ albums : albumsList });
         
         }.bind(this));
 
-        var albumCovers = [];
-        for(var i=0; i <= albumsData.length-1 ;i++){
-            var id = albumsData[i].data.id;
-            window.FB.api('/'+id+'/picture?redirect=false', function(response){
-                this.albumCovers.push(response.data.url);
-                console.log(albumCovers);
-            }.bind(this));
-        }
-
-        console.log(albumsData);
-        console.log(albumCovers);
+        const value = await this.state.albums;
+        console.log(value);
 
     }
 
-    // async getAlbumCover(id){
-    //     var url = '';
-    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
-    //         url = response.data.url;
-    //         console.log(url);
-    //         return url;
-    //     })
-    // }
+    getAlbumCover = (id) => {
+        var url = '';
+        window.FB.api('/'+id+'/picture?redirect=false', function(response){
+            url = response.data.url;
+            console.log(url);
+            return url;
+        })
+    }
 
     render() {
         if(this.state.albums!==""){
