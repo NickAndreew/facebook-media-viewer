@@ -153,22 +153,26 @@ class DropFiles extends React.Component {
 	}
 	 
 	render() {		
-		return (
-			<div>
-				<h3>{this.state.albumName}</h3>
-				<Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
-				<DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
-					<div className="dropFilesDiv control-group" id="dropBox">
-						<div className="backgroundText"></div>
-						<div id="myProgress">
-							<div id="myBar"></div>
+		if(this.state.albumName!==''){
+			return (
+				<div>
+					<h3>{this.state.albumName}</h3>
+					<Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
+					<DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
+						<div className="dropFilesDiv control-group" id="dropBox">
+							<div className="backgroundText"></div>
+							<div id="myProgress">
+								<div id="myBar"></div>
+							</div>
 						</div>
-					</div>
-						
-						<button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
-				</DropToUpload>
-			</div>
-		);
+							
+							<button className="uploadButton" onClick={ this.buttonClick }>Upload</button>
+					</DropToUpload>
+				</div>
+			);
+		} else {
+			return null;
+		}
 	}
 }
 
