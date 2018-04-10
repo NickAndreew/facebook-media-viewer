@@ -37,10 +37,15 @@ class AllAlbums extends Component {
         
         }.bind(this));
 
-        console.log(albumsData);
 
-        const value = await this.state.albums;
-        console.log(value);
+        for(var i=0; i <= albumsData.length-1 ;i++){
+            var id = albumsData[i].data.id;
+            window.FB.api('/'+id+'/picture?redirect=false', function(response){
+                albumsData[i].cover = response.data.url;
+            })
+        }
+        
+        console.log(albumsData);
 
     }
 
