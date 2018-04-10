@@ -17,19 +17,7 @@ class UploadTo extends Component {
 
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
                 var data = resp.albums.data[i];
-                var id = data.id;
-                console.log(id);
-                
-                var cover = '';
-
-                // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
-                //     return response.data.url;
-                // });
-                cover = this.getAlbumCover(id);
-                console.log(cover);
-
                 albumsList.push(data);
-
             }
 
             console.log(albumsList);
