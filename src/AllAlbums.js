@@ -25,7 +25,7 @@ class AllAlbums extends Component {
                 
                 var cover = '';
 
-                const responce = await window.FB.api('/'+id+'/picture?redirect=false', function(response){                   
+                const responce = await window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
                     return response.data.url;
                 });
                 console.log(responce);
