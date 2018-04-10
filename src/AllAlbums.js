@@ -25,10 +25,10 @@ class AllAlbums extends Component {
                 
                 var cover = '';
 
-                const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
-                    return response.data.url;
-                });
-                console.log(responce);
+                // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
+                //     return response.data.url;
+                // });
+                console.log(this.getAlbumCover(id));
 
                 albumsList.push({data, cover});
 
@@ -44,14 +44,14 @@ class AllAlbums extends Component {
 
     }
 
-    // async getAlbumCover(id){
-    //     var url = '';
-    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
-    //         url = response.data.url;
-    //         console.log(url);
-    //         return url;
-    //     }.bind(this))
-    // }
+    async getAlbumCover(id){
+        var url = '';
+        window.FB.api('/'+id+'/picture?redirect=false', function(response){
+            url = response.data.url;
+            console.log(url);
+            return url;
+        }.bind(this))
+    }
 
     render() {
         if(this.state.albums!==""){
