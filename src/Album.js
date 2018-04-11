@@ -48,27 +48,29 @@ class Album extends Component {
     }
     
     render (){
-        if(this.state.albumName!==""){
-            console.log(this.state.albumName);
-            console.log(this.state.photos);
-            return (
-                <div>
-                    <h1>{this.state.albumName}</h1>
-                    <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
-                    <div className="albumsDiv">
-                        {
-                            this.state.photos.map(a => (
-                                <div className="albumCover" key={a} style={{ backgroundImage : "url("+a+")" }}>
-                                    
-                                </div>
-                            ))
-                        }
+        do {
+            if(this.state.albumName!==""){
+                console.log(this.state.albumName);
+                console.log(this.state.photos);
+                return (
+                    <div>
+                        <h1>{this.state.albumName}</h1>
+                        <Link to='/albums'><h4 className="h4Cl">Back</h4></Link>
+                        <div className="albumsDiv">
+                            {
+                                this.state.photos.map(a => (
+                                    <div className="albumCover" key={a} style={{ backgroundImage : "url("+a+")" }}>
+                                        
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            )
-        } else {
-            return null;
-        }
+                )
+            } else {
+                return null;
+            }
+        } while (this.state.photos.length==0);
     }
 }   
 
