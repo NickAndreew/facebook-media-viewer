@@ -53,7 +53,7 @@ class AllAlbums extends Component {
 
     render() {
         if(this.state.albums.length==0){
-            this.forceUpdate();
+            return null;
         } else {
             return (
                 <div>
