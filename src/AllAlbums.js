@@ -32,17 +32,12 @@ class AllAlbums extends Component {
                     }
                 })
 
+                albumsList[i].data = data;
                 // albumsList.push({data, cover});
 
             }
 
-            console.log(albumsList);
-
-            for(var j = 0; j <= resp.albums.data.length-1 ; j++){
-                console.log(albumsList[j]);
-                albumsList[j].data = resp.albums.data[j];
-            }
-
+            
             console.log(albumsList);
             this.setState({ albums : albumsList });
         
