@@ -11,7 +11,7 @@ class AllAlbums extends Component {
         // this.getAlbumCover = this.getAlbumCover.bind(this);
     }
     
-    async componentDidMount(){
+    componentDidMount(){
         window.FB.api('/me?fields=albums', function(resp) {
             
             console.log(resp);
@@ -54,35 +54,31 @@ class AllAlbums extends Component {
     render() {
         do {
             console.log(this.state.albums.length);
-            if(this.state.albums.length>0){
-                console.log(this.state.albums)
-                return (
+            console.log(this.state.albums);
+            return (
+                <div>
                     <div>
-                        <div>
-                            <div className="albumsDiv"> 
-                                {
-                                    this.state.albums.map(a => (
-                                        console.log(a),
-                                        <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
-                                            <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
-                                                <div className="albumOnHover">
-                                                    <div className="albumOnHoverClick">
-                                                        <h3>{a.data.name}</h3>
-                                                        <p>{a.data.created_time}</p>
-                                                    </div>
+                        <div className="albumsDiv"> 
+                            {
+                                this.state.albums.map(a => (
+                                    console.log(a),
+                                    <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
+                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
+                                            <div className="albumOnHover">
+                                                <div className="albumOnHoverClick">
+                                                    <h3>{a.data.name}</h3>
+                                                    <p>{a.data.created_time}</p>
                                                 </div>
-                                            </Link>
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
-                )
-            } else {
-                return null;
-            }
-        } while (this.state.albums.length==0)
+                </div>
+            )
+        } while (this.state.albums.length==0);
     }
 };
 
