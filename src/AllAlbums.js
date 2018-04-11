@@ -39,6 +39,7 @@ class AllAlbums extends Component {
             console.log(albumsList);
 
             for(var j = 0; j <= resp.albums.data.length-1 ; j++){
+                console.log(albumsList[i]);
                 albumsList[i].data = resp.albums.data[i];
             }
 
