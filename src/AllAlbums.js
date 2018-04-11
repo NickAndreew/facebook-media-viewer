@@ -41,15 +41,16 @@ class AllAlbums extends Component {
         }.bind(this));
     }
 
-    async getAlbumCover(id){
+    getAlbumCover(id){
         var url = '';
         window.FB.api('/'+id+'/picture?redirect=false', async function(response){
             if(response.data.url!=''){
                 url = response.data.url;
+                console.log(url);
             }
         })
         console.log(url);
-        return await url;
+        return url;
     }
 
     render() {
