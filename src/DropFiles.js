@@ -25,7 +25,7 @@ class DropFiles extends React.Component {
 				var name = resp.name;
 				this.setState({albumName: name});
 			} else {
-				this.setState({albumName: 'Undefined'});
+				this.setState({albumName: ''});
 			}
 		}.bind(this));
 	}
@@ -158,7 +158,7 @@ class DropFiles extends React.Component {
 	}
 	 
 	render() {		
-		if(this.state.albumName!==""){
+		if(this.state.albumName!==''){
 			console.log(this.state.albumName);
 			return (
 				<div>
