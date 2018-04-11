@@ -52,34 +52,36 @@ class AllAlbums extends Component {
     // }
 
     render() {
-        if(await this.state.albums!==""){
-            console.log(this.state.albums)
-            return (
-                <div>
+        do{
+            if(this.state.albums.length>0){
+                console.log(this.state.albums)
+                return (
                     <div>
-                        <div className="albumsDiv"> 
-                            {
-                                this.state.albums.map(a => (
-                                    console.log(a),
-                                    <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
-                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
-                                            <div className="albumOnHover">
-                                                <div className="albumOnHoverClick">
-                                                    <h3>{a.data.name}</h3>
-                                                    <p>{a.data.created_time}</p>
+                        <div>
+                            <div className="albumsDiv"> 
+                                {
+                                    this.state.albums.map(a => (
+                                        console.log(a),
+                                        <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
+                                            <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
+                                                <div className="albumOnHover">
+                                                    <div className="albumOnHoverClick">
+                                                        <h3>{a.data.name}</h3>
+                                                        <p>{a.data.created_time}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ))
-                            }
+                                            </Link>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
-        } else {
-            return null;
-        }
+                )
+            } else {
+                return null;
+            }
+        } while(this.state.albums==0)
     }
 };
 
