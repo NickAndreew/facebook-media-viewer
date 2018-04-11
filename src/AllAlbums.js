@@ -44,7 +44,9 @@ class AllAlbums extends Component {
     async getAlbumCover(id){
         var url = '';
         window.FB.api('/'+id+'/picture?redirect=false', async function(response){
-            url = response.data.url;
+            if(response.data.url!=''){
+                url = response.data.url;
+            }
         })
         console.log(url);
         return await url;
