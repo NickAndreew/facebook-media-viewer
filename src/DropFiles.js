@@ -157,7 +157,7 @@ class DropFiles extends React.Component {
 	}
 	 
 	render() {		
-		if(this.state.albumName!==''){
+		if(this.state.albumName!==""){
 			return (
 				<div>
 					<h3>{this.state.albumName}</h3>
