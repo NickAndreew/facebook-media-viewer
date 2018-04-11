@@ -52,7 +52,8 @@ class AllAlbums extends Component {
     // }
 
     render() {
-        do{
+        do {
+            console.log(this.state.albums.length);
             if(this.state.albums.length>0){
                 console.log(this.state.albums)
                 return (
@@ -81,7 +82,7 @@ class AllAlbums extends Component {
             } else {
                 return null;
             }
-        } while(this.state.albums==0)
+        } while (this.state.albums==0)
     }
 };
 
