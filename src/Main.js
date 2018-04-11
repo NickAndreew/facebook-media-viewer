@@ -56,7 +56,7 @@ class Main extends Component {
         if(this.state.status!==""){
             return (
                 <Switch>
-                    <Route path='/login' component={Login}></Route>
+                    <ProtectedRoute isAccessible={!this.state.status} redirectToPath='/profile' path='/login' component={Login}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/profile' exact path='/' component={Profile}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
