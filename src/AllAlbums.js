@@ -42,14 +42,12 @@ class AllAlbums extends Component {
     }
 
     getAlbumCover(id){
-        var url = '';
-        window.FB.api('/'+id+'/picture?redirect=false', async function(response){
+        var url = window.FB.api('/'+id+'/picture?redirect=false', async function(response){
             if(response.data.url!=''){
-                url = response.data.url;
-                console.log(url);
+                return response.data.url;
             }
         })
-        console.log(await url);
+        console.log(url);
         return url;
     }
 
