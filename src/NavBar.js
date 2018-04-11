@@ -25,7 +25,7 @@ class NavBar extends Component{
 				</div>
 				<nav>
 					<ul>
-						<li><NavLink exact to='/profile'>Profile</NavLink></li>
+						<li><NavLink exact to='/'>Profile</NavLink></li>
 						<li><NavLink exact to='/albums'>Albums</NavLink></li>
 						<li><NavLink exact to='/upload'>Upload</NavLink></li>
 						<li><a className="logoutButton" onClick={ this.logoutFunction }><span className="glyphicon glyphicon-user"></span>Log Out</a></li>
