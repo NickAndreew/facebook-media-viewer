@@ -14,6 +14,7 @@ class Album extends Component {
 
     componentWillMount(){
         window.FB.api('/'+this.props.match.params.id, function(resp){
+            console.log(resp);
             if(resp.name!=''){
                 var name = resp.name;
                 console.log(name);
