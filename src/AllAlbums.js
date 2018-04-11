@@ -79,6 +79,7 @@ class AllAlbums extends Component {
                 </div>
             )
         } while (this.state.albums.length==0);
+        this.forceUpdate();
     }
 };
 
