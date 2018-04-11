@@ -33,17 +33,15 @@ class Album extends Component {
                 }.bind(this));
             }
 
-            // this.setState({photos: photosList});
+            this.setState({photos: photosList});
         }.bind(this));
 
-        this.setState({photos: photosList});
     }
     
     render (){
         // console.log(this.state.photos);
-        console.log(this.props.params);
+        console.log(this.state.albumName);
         if(this.state.photos.length>0){
-            console.log(this.props.match.params.name);
             return (
                 <div>
                     <h1>{this.state.albumName}</h1>
