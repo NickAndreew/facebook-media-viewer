@@ -52,9 +52,9 @@ class AllAlbums extends Component {
     // }
 
     render() {
-        do {
-            console.log(this.state.albums.length);
-            console.log(this.state.albums);
+        if(this.state.albums.length==0){
+            this.forceUpdate();
+        } else {
             return (
                 <div>
                     <div>
@@ -78,8 +78,7 @@ class AllAlbums extends Component {
                     </div>
                 </div>
             )
-        } while (this.state.albums.length==0);
-        this.forceUpdate();
+        }
     }
 };
 
