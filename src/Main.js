@@ -57,6 +57,7 @@ class Main extends Component {
             return (
                 <Switch>
                     <Route path='/login' component={Login}></Route>
+                    <ProtectedRoute isAccessible={this.state.status} redirectToPath='/profile' path='/' component={}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/profile' component={Profile}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/albums' component={Albums}></ProtectedRoute>
                     <ProtectedRoute isAccessible={this.state.status} redirectToPath='/login' path='/upload' component={Upload}></ProtectedRoute>

@@ -12,7 +12,7 @@ class Upload extends Component {
                 <div>UPLOAD</div>
                 <Switch>
                     <Route exact path='/upload' component={UploadTo} />
-                    <Route path='/upload/:number' component={DropFiles} />
+                    <Route path='/upload/:id' component={DropFiles} />
                 </Switch>
             </div>
         )
