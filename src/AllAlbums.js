@@ -28,13 +28,16 @@ class AllAlbums extends Component {
                 window.FB.api('/'+id+'/picture?redirect=false', function(response){
                     if(response.data.url!=''){
                         cover = response.data.url;
-                        albumsList.push({data, cover});
+                        albumsList.push({data: '', cover});
                     }
                 })
-                console.log(cover);
 
                 // albumsList.push({data, cover});
 
+            }
+
+            for(var j = 0; j <= resp.albums.data.length-1 ; j++){
+                albumsList[i].data = resp.albums.data[i];
             }
 
             console.log(albumsList);
