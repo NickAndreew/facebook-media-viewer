@@ -20,8 +20,12 @@ class DropFiles extends React.Component {
 
 	async componentDidMount(){
 		window.FB.api('/'+this.props.match.params+'/', function(resp){
-			var name = resp.name;
-			this.setState({albumName: name});
+			if(){
+				var name = resp.name;
+				this.setState({albumName: name});
+			} else {
+				this.setState({albumName: 'Undefined'});
+			}
 		}.bind(this));
 	}
 
