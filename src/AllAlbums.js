@@ -25,13 +25,15 @@ class AllAlbums extends Component {
                 
                 var cover = '';
 
-                // const responce = window.FB.api('/'+id+'/picture?redirect=false', async function(response){                   
-                //     return response.data.url;
-                // });
-                cover = this.getAlbumCover(id);
+                window.FB.api('/'+id+'/picture?redirect=false', function(response){
+                    if(response.data.url!=''){
+                        cover = response.data.url;
+                        albumsList.push({data, cover});
+                    }
+                })
                 console.log(cover);
 
-                albumsList.push({data, cover});
+                // albumsList.push({data, cover});
 
             }
 
@@ -41,15 +43,16 @@ class AllAlbums extends Component {
         }.bind(this));
     }
 
-    getAlbumCover(id){
-        var url = window.FB.api('/'+id+'/picture?redirect=false', function(response){
-            if(response.data.url!=''){
-                return response.data.url;
-            }
-        })
-        console.log(url);
-        return url;
-    }
+    // getAlbumCover(id){
+    //     var url = '';
+    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
+    //         if(response.data.url!=''){
+    //             return response.data.url;
+    //         }
+    //     })
+    //     console.log(url);
+    //     return url;
+    // }
 
     render() {
         if(this.state.albums!==""){
