@@ -42,7 +42,7 @@ class AllAlbums extends Component {
     }
 
     getAlbumCover(id){
-        var url = window.FB.api('/'+id+'/picture?redirect=false', async function(response){
+        var url = await window.FB.api('/'+id+'/picture?redirect=false', async function(response){
             if(response.data.url!=''){
                 return response.data.url;
             }
