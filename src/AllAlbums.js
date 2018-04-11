@@ -52,7 +52,7 @@ class AllAlbums extends Component {
     // }
 
     render() {
-        if(this.state.albums!==""){
+        if(await this.state.albums!==""){
             console.log(this.state.albums)
             return (
                 <div>
