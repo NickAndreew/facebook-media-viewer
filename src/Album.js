@@ -41,7 +41,6 @@ class Album extends Component {
     
     render (){
         // console.log(this.state.photos);
-        console.log(this.props.params.value);
         console.log(this.props.params);
         if(this.state.photos.length>0){
             console.log(this.props.match.params.name);
