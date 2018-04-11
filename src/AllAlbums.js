@@ -49,7 +49,7 @@ class AllAlbums extends Component {
                 console.log(url);
             }
         })
-        console.log(url);
+        console.log(await url);
         return url;
     }
 
