@@ -39,13 +39,13 @@ class AllAlbums extends Component {
         
         }.bind(this));
         
-        // for(var i=false; i!==true; ){
-        //     if(this.state.albums.length>0){
-        //         i = true;
-        //         console.log("forceUpdate works");
-        //         this.forceUpdate();
-        //     }
-        // }
+        for(var i=false; i!==true; ){
+            if(this.state.albums.length>0){
+                i = true;
+                console.log("forceUpdate works");
+                this.forceUpdate();
+            }
+        }
 
     }
 
