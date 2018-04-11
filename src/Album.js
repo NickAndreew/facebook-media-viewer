@@ -7,14 +7,19 @@ class Album extends Component {
         super(props);
         this.state = {
             albumName: "",
-            photos: ""
+            photos: []
         }
         this.loadAlbumContent = this.loadAlbumContent.bind(this);
     }
 
     componentWillMount(){
         window.FB.api('/'+this.props.match.params.id, function(resp){
-            this.setState({albumName: resp.name});
+            if(resp.name!=''){
+                var name = resp.name;
+                this.setState({albumName: name});
+            } else {
+                this.setState({albumName: 'Undefined'});
+            }
         }.bind(this));
 
         this.loadAlbumContent();
