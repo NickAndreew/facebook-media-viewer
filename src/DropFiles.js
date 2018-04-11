@@ -158,10 +158,11 @@ class DropFiles extends React.Component {
 	 
 	render() {		
 		if(this.state.albumName!==""){
+			console.log(this.state.albumName);
 			return (
 				<div>
-					<h3>{this.state.albumName}</h3>
 					<Link to='/upload'><h4 className="h4Cl">Back</h4></Link>
+					<h3>{this.state.albumName}</h3>
 					<DropToUpload onDrop={ this.handleDrop } onDropArrayBuffer={ this.handleDropArrayBuffer } onDropDataURI={ this.handleDropDataURI }>
 						<div className="dropFilesDiv control-group" id="dropBox">
 							<div className="backgroundText"></div>
