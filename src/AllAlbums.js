@@ -82,7 +82,7 @@ class AllAlbums extends Component {
             } else {
                 return null;
             }
-        } while (this.state.albums==[])
+        } while (this.state.albums.length==0)
     }
 };
 
