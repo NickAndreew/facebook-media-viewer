@@ -39,13 +39,13 @@ class AllAlbums extends Component {
         
         }.bind(this));
         
-        for(var i=false; i!==true; ){
-            if(this.state.albums.length>0){
-                i = true;
-                console.log("forceUpdate works");
-                this.forceUpdate();
-            }
-        }
+        // for(var i=false; i!==true; ){
+        //     if(this.state.albums.length>0){
+        //         i = true;
+        //         console.log("forceUpdate works");
+        //         this.forceUpdate();
+        //     }
+        // }
 
     }
 
@@ -61,29 +61,33 @@ class AllAlbums extends Component {
     // }
 
     render() {         
-        return (
-            <div>
+        if (this.state.albums.length>0) {
+            return (
                 <div>
-                    <div className="albumsDiv"> 
-                        {
-                            this.state.albums.map(a => (
-                                console.log(a),
-                                <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
-                                    <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
-                                        <div className="albumOnHover">
-                                            <div className="albumOnHoverClick">
-                                                <h3>{a.data.name}</h3>
-                                                <p>{a.data.created_time}</p>
+                    <div>
+                        <div className="albumsDiv"> 
+                            {
+                                this.state.albums.map(a => (
+                                    console.log(a),
+                                    <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
+                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
+                                            <div className="albumOnHover">
+                                                <div className="albumOnHoverClick">
+                                                    <h3>{a.data.name}</h3>
+                                                    <p>{a.data.created_time}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))
-                        }
+                                        </Link>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            </div>       
-        )
+                </div>       
+            )
+        } else {
+            return null;
+        }
     }
 };
 
