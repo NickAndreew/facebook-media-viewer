@@ -18,7 +18,7 @@ class DropFiles extends React.Component {
 		this.buttonClick = this.buttonClick.bind(this);
 	}
 
-	async componentDidMount(){
+	componentDidMount(){
 		window.FB.api('/'+this.props.match.params+'/', function(resp){
 			if(resp.name!=''){
 				var name = resp.name;
