@@ -19,7 +19,7 @@ class AllAlbums extends Component {
             var albumsList = [];
 
             for (var i=0 ; i <= resp.albums.data.length-1 ; i++) {
-                var data = resp.albums.data[i];
+                const data = resp.albums.data[i];
                 var id = data.id;
                 console.log(id);
                 
@@ -28,7 +28,7 @@ class AllAlbums extends Component {
                 window.FB.api('/'+id+'/picture?redirect=false', function(response){
                     if(response.data.url!=''){
                         cover = response.data.url;
-                        albumsList.push({data: '', cover: cover});
+                        albumsList.push({data: data, cover: cover});
                     }
                 })
 
@@ -59,7 +59,6 @@ class AllAlbums extends Component {
     render() {
         if(this.state.albums!==""){
             return (
-                console.log(this.state.albums),
                 <div>
                     <div>
                         <div className="albumsDiv"> 
