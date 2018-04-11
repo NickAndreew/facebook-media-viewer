@@ -32,21 +32,9 @@ class AllAlbums extends Component {
                     }
                 })
             }
-
-            
             console.log(albumsList);
             this.setState({ albums : albumsList });
-        
         }.bind(this));
-        
-        for(var i=false; i!==true; ){
-            if(this.state.albums.length>0){
-                i = true;
-                console.log("forceUpdate works");
-                this.forceUpdate();
-            }
-        }
-
     }
 
     // getAlbumCover(id){
