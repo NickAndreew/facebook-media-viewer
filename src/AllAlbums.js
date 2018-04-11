@@ -31,11 +31,6 @@ class AllAlbums extends Component {
                         albumsList.push({data: data, cover: cover});
                     }
                 })
-
-                console.log(albumsList[i]);
-
-                // albumsList[i].data = data;
-                // albumsList.push({data, cover});
             }
 
             
@@ -58,6 +53,7 @@ class AllAlbums extends Component {
 
     render() {
         if(this.state.albums!==""){
+            console.log(this.state.albums)
             return (
                 <div>
                     <div>
