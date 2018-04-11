@@ -60,7 +60,7 @@ class AllAlbums extends Component {
                             {
                                 this.state.albums.map(a => (
                                     <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
-                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name, id:a.data.id }}>
+                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
                                             <div className="albumOnHover">
                                                 <div className="albumOnHoverClick">
                                                     <h3>{a.data.name}</h3>
