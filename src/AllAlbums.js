@@ -6,9 +6,7 @@ class AllAlbums extends Component {
 		super(props);
 		this.state = {
             albums: []
-        }
-        
-        // this.getAlbumCover = this.getAlbumCover.bind(this);
+        }        
     }
     
     componentDidMount(){
@@ -36,42 +34,35 @@ class AllAlbums extends Component {
             this.setState({ albums : albumsList });
         }.bind(this));
     }
-
-    // getAlbumCover(id){
-    //     var url = '';
-    //     window.FB.api('/'+id+'/picture?redirect=false', function(response){
-    //         if(response.data.url!=''){
-    //             return response.data.url;
-    //         }
-    //     })
-    //     console.log(url);
-    //     return url;
-    // }
-
+    
     render() {         
-        return (
-            <div>
+        if (this.state.albums.length>0) {
+            return (
                 <div>
-                    <div className="albumsDiv"> 
-                        {
-                            this.state.albums.map(a => (
-                                console.log(a),
-                                <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
-                                    <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
-                                        <div className="albumOnHover">
-                                            <div className="albumOnHoverClick">
-                                                <h3>{a.data.name}</h3>
-                                                <p>{a.data.created_time}</p>
+                    <div>
+                        <div className="albumsDiv"> 
+                            {
+                                this.state.albums.map(a => (
+                                    console.log(a),
+                                    <div className="albumCover" key={a.data.id} id={a.data.id} style={{backgroundImage: 'url('+a.cover+')'}}>
+                                        <Link to={`/albums/${a.data.id}`} params={{name:a.data.name}}>
+                                            <div className="albumOnHover">
+                                                <div className="albumOnHoverClick">
+                                                    <h3>{a.data.name}</h3>
+                                                    <p>{a.data.created_time}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))
-                        }
+                                        </Link>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            </div>       
-        )
+                </div>       
+            )
+        } else {
+            return null;
+        }
     }
 };
 
