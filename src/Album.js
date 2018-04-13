@@ -12,7 +12,7 @@ class Album extends Component {
         this.loadAlbumContent = this.loadAlbumContent.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         window.FB.api('/'+this.props.match.params.id, function(resp){
             if(resp.name!==''){
                 var name = resp.name;
