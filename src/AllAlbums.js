@@ -32,8 +32,15 @@ class AllAlbums extends Component {
             }
             console.log(albumsList);
             this.setState({ albums : albumsList });
-            this.forceUpdate();
+            
         }.bind(this));
+        
+        for(var i = false; i!=true; ){
+            if(this.state.albums.length>0){
+                this.forceUpdate();
+                break;
+            }
+        }
     }
     
     render() {         
