@@ -32,6 +32,7 @@ class AllAlbums extends Component {
             }
             console.log(albumsList);
             this.setState({ albums : albumsList });
+            this.forceUpdate();
         }.bind(this));
     }
     
@@ -61,7 +62,6 @@ class AllAlbums extends Component {
                 </div>       
             )
         } else {
-            this.forceUpdate();
             return null;
         }
     }
