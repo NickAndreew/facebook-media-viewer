@@ -61,6 +61,7 @@ class AllAlbums extends Component {
                 </div>       
             )
         } else {
+            this.forceUpdate();
             return null;
         }
     }

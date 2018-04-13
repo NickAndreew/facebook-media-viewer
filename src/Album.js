@@ -29,8 +29,6 @@ class Album extends Component {
         var photosList = [];
 
         window.FB.api('/'+this.props.match.params.id+'/photos', function(resp){
-            
-            // console.log(resp.data);
             for(var i=0 ; i <= resp.data.length-1 ; i++){
                 window.FB.api('/'+resp.data[i].id+'/picture?redirect=false', function(response){
                     if(response.data.url!==''){
@@ -41,10 +39,8 @@ class Album extends Component {
                     }
                 }.bind(this));
             }
-
             this.setState({photos: photosList});
         }.bind(this));
-
     }
     
     render (){
@@ -60,7 +56,7 @@ class Album extends Component {
                             {
                                 this.state.photos.map(a => (
                                     <div className="albumCover" key={a} style={{ backgroundImage : "url("+a+")" }}>
-                                        
+
                                     </div>
                                 ))
                             }
